@@ -210,7 +210,7 @@ export async function POST(request: NextRequest) {
 
     // 1. ユーザーへの自動返信メール
     const userMailOptions = {
-      from: '"ポートフォリオ年末大掃除診断" <send@example.com>',
+      from: '"ポートフォリオ年末大掃除診断" <quest@kawaraban.co.jp>',
       to: userInfo.email,
       subject: `【診断結果】${diagnosisResult.emoji} ${diagnosisResult.title} - ポートフォリオ年末大掃除診断`,
       html: generateEmailHTML(data),
@@ -218,7 +218,7 @@ export async function POST(request: NextRequest) {
 
     // 2. 管理者への通知メール（テキスト形式）
     const adminMailOptions = {
-      from: '"ポートフォリオ診断システム" <send@example.com>',
+      from: '"ポートフォリオ診断システム" <info@kawaraban.co.jp>',
       to: ['quest@kawaraban.co.jp', 'y3awtd-hirayama-p@hdbronze.htdb.jp'],
       subject: `【ポートフォリオ大掃除診断結果】${userInfo.name} 様`,
       text: generateAdminEmailText(data),
