@@ -1,14 +1,16 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import DiagnosisResultComponent from '@/components/DiagnosisResult';
-import { PortfolioData } from '@/types/portfolio';
+import { PortfolioData, UserInfo } from '@/types/portfolio';
 import { diagnosePortfolio } from '@/utils/diagnosis';
 import Link from 'next/link';
 
 function ResultContent() {
   const searchParams = useSearchParams();
+  const [emailSent, setEmailSent] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   
   const portfolio: PortfolioData = {
     stocks: parseFloat(searchParams.get('stocks') || '0'),
@@ -20,9 +22,62 @@ function ResultContent() {
     other: parseFloat(searchParams.get('other') || '0'),
   };
 
+  const userInfo: UserInfo = {
+    name: searchParams.get('name') || '',
+    phone: searchParams.get('phone') || '',
+    email: searchParams.get('email') || '',
+  };
+
+  const totalAmount = parseInt(searchParams.get('total') || '0', 10);
+
   const total = Object.values(portfolio).reduce((sum, val) => sum + val, 0);
   
-  if (Math.abs(total - 100) > 1) {
+  // 診断結果を取得
+  const result = Math.abs(total - 100) <= 1 ? diagnosePortfolio(portfolio) : null;
+
+  // メール送信
+  useEffect(() => {
+    const sendEmail = async () => {
+      if (!result || !userInfo.email || emailSent) return;
+
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userInfo,
+            portfolio,
+            totalAmount,
+            diagnosisResult: {
+              emoji: result.emoji,
+              title: result.title,
+              diagnosis: result.diagnosis,
+              newsForecast: result.newsForecast,
+              cleanupAdvice: result.cleanupAdvice,
+              stats: result.stats,
+            },
+          }),
+        });
+
+        if (response.ok) {
+          setEmailSent(true);
+          console.log('メール送信成功');
+        } else {
+          setEmailError(true);
+          console.error('メール送信失敗');
+        }
+      } catch (error) {
+        setEmailError(true);
+        console.error('メール送信エラー:', error);
+      }
+    };
+
+    sendEmail();
+  }, [result, userInfo, portfolio, totalAmount, emailSent]);
+  
+  if (Math.abs(total - 100) > 1 || !result) {
     return (
       <div className="bg-white rounded-lg fb-shadow p-8 text-center">
         <p className="text-4xl mb-4">🚫</p>
@@ -42,16 +97,44 @@ function ResultContent() {
     );
   }
 
-  const result = diagnosePortfolio(portfolio);
-
   return (
     <>
+      {/* メール送信ステータス */}
+      {emailSent && (
+        <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4 text-center">
+          <p className="text-green-700 text-sm">
+            ✅ 診断結果を {userInfo.email} にお送りしました
+          </p>
+        </div>
+      )}
+      {emailError && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-4 text-center">
+          <p className="text-red-700 text-sm">
+            ⚠️ メール送信に失敗しました。結果は画面でご確認ください。
+          </p>
+        </div>
+      )}
+
+      {/* ユーザー情報 */}
+      <div className="bg-white rounded-lg fb-shadow p-4 mb-4">
+        <h2 className="font-bold text-[#1c1e21] mb-2 flex items-center gap-2">
+          <span className="w-1 h-4 instagram-gradient rounded-full"></span>
+          {userInfo.name} 様
+        </h2>
+        <p className="text-[#65676b] text-sm">
+          診断結果をメールでもお送りしています
+        </p>
+      </div>
+
       {/* ポートフォリオ概要 */}
       <div className="bg-white rounded-lg fb-shadow p-4 mb-4">
-        <h2 className="font-bold text-[#1c1e21] mb-3 flex items-center gap-2">
+        <h2 className="font-bold text-[#1c1e21] mb-2 flex items-center gap-2">
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
           あなたのポートフォリオ
         </h2>
+        <p className="text-[#65676b] text-sm mb-3">
+          総資産額: ¥{totalAmount.toLocaleString('ja-JP')}
+        </p>
         <div className="flex flex-wrap gap-1.5">
           {[
             { label: '株式', value: portfolio.stocks, emoji: '📈' },

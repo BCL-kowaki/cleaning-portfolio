@@ -8,6 +8,12 @@ export interface PortfolioData {
   other: number;         // その他
 }
 
+export interface UserInfo {
+  name: string;          // 氏名
+  phone: string;         // 電話番号
+  email: string;         // メールアドレス
+}
+
 export type DiagnosisType = 
   | 'gambler'      // ギャンブラー型
   | 'safekeeper'   // 金庫番型
@@ -33,4 +39,3 @@ export interface DiagnosisResult {
     inflationResist: number; // インフレ耐性
   };
 }
-
