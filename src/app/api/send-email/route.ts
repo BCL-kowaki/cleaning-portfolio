@@ -1,15 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-// メール送信設定（本番環境では環境変数から取得）
+// AWS SES SMTP設定
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || 'smtp.example.com',
+  host: process.env.SMTP_HOST || 'email-smtp.ap-northeast-1.amazonaws.com',
   port: Number(process.env.SMTP_PORT) || 587,
   secure: false,
   auth: {
     user: process.env.SMTP_USER || '',
     pass: process.env.SMTP_PASS || '',
   },
+  tls: {
+    rejectUnauthorized: true,
+  },
+});
+
+// 起動時に設定を確認（デバッグ用）
+console.log('SMTP設定:', {
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  user: process.env.SMTP_USER ? '設定済み' : '未設定',
+  pass: process.env.SMTP_PASS ? '設定済み' : '未設定',
 });
 
 interface EmailRequest {
@@ -19,6 +30,15 @@ interface EmailRequest {
     email: string;
   };
   portfolio: {
+    stocks: number;
+    realEstate: number;
+    gold: number;
+    mutualFunds: number;
+    crypto: number;
+    cash: number;
+    other: number;
+  };
+  amounts: {
     stocks: number;
     realEstate: number;
     gold: number;
@@ -173,8 +193,12 @@ function generateEmailHTML(data: EmailRequest): string {
   `;
 }
 
+function formatYen(amount: number): string {
+  return amount.toLocaleString('ja-JP');
+}
+
 function generateAdminEmailText(data: EmailRequest): string {
-  const { userInfo, portfolio } = data;
+  const { userInfo, amounts } = data;
   
   // 日本時間でフォーマット
   const now = new Date();
@@ -194,13 +218,13 @@ function generateAdminEmailText(data: EmailRequest): string {
 氏名：${userInfo.name}
 電話番号：${userInfo.phone}
 メールアドレス：${userInfo.email}
-株式：${portfolio.stocks.toFixed(1)}%
-不動産：${portfolio.realEstate.toFixed(1)}%
-金：${portfolio.gold.toFixed(1)}%
-投信／ETF：${portfolio.mutualFunds.toFixed(1)}%
-暗号通貨：${portfolio.crypto.toFixed(1)}%
-現金：${portfolio.cash.toFixed(1)}%
-その他：${portfolio.other.toFixed(1)}%`;
+株式：¥${formatYen(amounts.stocks)}
+不動産：¥${formatYen(amounts.realEstate)}
+金：¥${formatYen(amounts.gold)}
+投信／ETF：¥${formatYen(amounts.mutualFunds)}
+暗号通貨：¥${formatYen(amounts.crypto)}
+現金：¥${formatYen(amounts.cash)}
+その他：¥${formatYen(amounts.other)}`;
 }
 
 export async function POST(request: NextRequest) {
@@ -217,40 +241,42 @@ export async function POST(request: NextRequest) {
     };
 
     // 2. 管理者への通知メール（テキスト形式）
+    // ※ 送信元は認証済みアドレスを使用
     const adminMailOptions = {
-      from: '"ポートフォリオ診断システム" <info@kawaraban.co.jp>',
+      from: '"ポートフォリオ診断システム" <quest@kawaraban.co.jp>',
       to: ['quest@kawaraban.co.jp', 'y3awtd-hirayama-p@hdbronze.htdb.jp'],
       subject: `【ポートフォリオ大掃除診断結果】${userInfo.name} 様`,
       text: generateAdminEmailText(data),
     };
 
-    // メール送信（本番環境ではコメントを外す）
-    // await transporter.sendMail(userMailOptions);
-    // await transporter.sendMail(adminMailOptions);
+    // メール送信
+    await transporter.sendMail(userMailOptions);
+    await transporter.sendMail(adminMailOptions);
 
-    // 開発環境ではログ出力
-    console.log('=== ユーザー宛メール ===');
-    console.log('To:', userMailOptions.to);
-    console.log('Subject:', userMailOptions.subject);
-    console.log('');
-    console.log('=== 管理者宛メール ===');
-    console.log('To:', adminMailOptions.to);
-    console.log('Subject:', adminMailOptions.subject);
+    console.log('メール送信完了:', userMailOptions.to, adminMailOptions.to);
 
     return NextResponse.json({ 
       success: true, 
-      message: 'メール送信処理が完了しました',
-      // 開発用: 送信内容の確認
-      debug: {
-        userEmail: userMailOptions.to,
-        adminEmails: adminMailOptions.to,
-      }
+      message: 'メール送信が完了しました'
     });
 
   } catch (error) {
-    console.error('メール送信エラー:', error);
+    console.error('メール送信エラー詳細:', error);
+    
+    // エラーメッセージを取得
+    const errorMessage = error instanceof Error ? error.message : '不明なエラー';
+    
     return NextResponse.json(
-      { success: false, message: 'メール送信に失敗しました' },
+      { 
+        success: false, 
+        message: 'メール送信に失敗しました',
+        error: errorMessage,
+        debug: {
+          smtpHost: process.env.SMTP_HOST || '未設定',
+          smtpPort: process.env.SMTP_PORT || '未設定',
+          smtpUser: process.env.SMTP_USER ? '設定済み' : '未設定',
+        }
+      },
       { status: 500 }
     );
   }

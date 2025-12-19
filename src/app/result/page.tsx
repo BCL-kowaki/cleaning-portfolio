@@ -12,6 +12,7 @@ function ResultContent() {
   const [emailSent, setEmailSent] = useState(false);
   const [emailError, setEmailError] = useState(false);
   
+  // 比率（%）
   const portfolio: PortfolioData = {
     stocks: parseFloat(searchParams.get('stocks') || '0'),
     realEstate: parseFloat(searchParams.get('realEstate') || '0'),
@@ -20,6 +21,17 @@ function ResultContent() {
     crypto: parseFloat(searchParams.get('crypto') || '0'),
     cash: parseFloat(searchParams.get('cash') || '0'),
     other: parseFloat(searchParams.get('other') || '0'),
+  };
+
+  // 金額（円）
+  const amounts = {
+    stocks: parseInt(searchParams.get('amt_stocks') || '0', 10),
+    realEstate: parseInt(searchParams.get('amt_realEstate') || '0', 10),
+    gold: parseInt(searchParams.get('amt_gold') || '0', 10),
+    mutualFunds: parseInt(searchParams.get('amt_mutualFunds') || '0', 10),
+    crypto: parseInt(searchParams.get('amt_crypto') || '0', 10),
+    cash: parseInt(searchParams.get('amt_cash') || '0', 10),
+    other: parseInt(searchParams.get('amt_other') || '0', 10),
   };
 
   const userInfo: UserInfo = {
@@ -49,6 +61,7 @@ function ResultContent() {
           body: JSON.stringify({
             userInfo,
             portfolio,
+            amounts,
             totalAmount,
             diagnosisResult: {
               emoji: result.emoji,

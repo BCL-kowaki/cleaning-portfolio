@@ -140,8 +140,13 @@ export default function PortfolioForm() {
     if (!validateForm()) return;
 
     const params = new URLSearchParams();
+    // 比率を渡す
     Object.entries(percentages).forEach(([key, value]) => {
       params.set(key, value.toFixed(2));
+    });
+    // 金額を渡す（管理者通知用）
+    Object.entries(amounts).forEach(([key, value]) => {
+      params.set(`amt_${key}`, value.toString());
     });
     // ユーザー情報も渡す
     params.set('name', userInfo.name);
