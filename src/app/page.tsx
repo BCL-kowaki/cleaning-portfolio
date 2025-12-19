@@ -1,65 +1,59 @@
-import Image from "next/image";
+import PortfolioForm from '@/components/PortfolioForm';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen bg-[#f0f2f5]">
+      {/* ヘッダー */}
+      <header className="instagram-gradient text-white py-6 px-4 mb-6">
+        <div className="container mx-auto max-w-xl text-center">
+          <div className="text-5xl mb-3">🧹</div>
+          <h1 className="text-2xl font-bold mb-2">
+            ポートフォリオ年末大掃除診断
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-white/90 text-sm">
+            2026年に向けたリバランスアドバイスを受け取ろう
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      <div className="container mx-auto px-4 max-w-xl pb-8">
+        {/* 説明カード */}
+        <div className="bg-white rounded-lg fb-shadow p-4 mb-4">
+          <h2 className="font-bold text-[#1c1e21] mb-3 flex items-center gap-2">
+            <span className="w-1 h-4 instagram-gradient rounded-full"></span>
+            使い方
+          </h2>
+          <div className="flex gap-4 text-sm text-[#65676b]">
+            <div className="flex-1 text-center">
+              <div className="w-8 h-8 instagram-gradient rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">1</div>
+              <p>金額を入力</p>
+            </div>
+            <div className="flex-1 text-center">
+              <div className="w-8 h-8 instagram-gradient rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">2</div>
+              <p>自動で比率計算</p>
+            </div>
+            <div className="flex-1 text-center">
+              <div className="w-8 h-8 instagram-gradient rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">3</div>
+              <p>診断結果を確認</p>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+
+        {/* フォームカード */}
+        <div className="bg-white rounded-lg fb-shadow p-4">
+          <h2 className="font-bold text-[#1c1e21] mb-4 flex items-center gap-2">
+            <span className="w-1 h-4 instagram-gradient rounded-full"></span>
+            現在のポートフォリオ
+          </h2>
+          <PortfolioForm />
+        </div>
+
+        {/* フッター */}
+        <footer className="mt-6 text-center text-[#65676b] text-xs">
+          <p>© 2025 ポートフォリオ年末大掃除診断</p>
+          <p className="mt-1">※ この診断はエンターテインメント目的です</p>
+        </footer>
+      </div>
+    </main>
   );
 }
