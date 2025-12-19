@@ -158,11 +158,6 @@ export default function PortfolioForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* ユーザー情報入力 */}
       <div className="bg-[#f0f2f5] rounded-lg p-4 space-y-3">
-        <h3 className="font-bold text-[#1c1e21] flex items-center gap-2">
-          <span className="w-1 h-4 instagram-gradient rounded-full"></span>
-          お客様情報
-        </h3>
-        
         <div>
           <label className="block text-sm font-medium text-[#65676b] mb-1">
             氏名 <span className="text-red-500">*</span>
@@ -210,7 +205,7 @@ export default function PortfolioForm() {
       <div className="space-y-3">
         <h3 className="font-bold text-[#1c1e21] flex items-center gap-2">
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
-          資産配分
+          現在のポートフォリオ
         </h3>
         
         {assetTypes.map(({ key, label, emoji, description }) => (
