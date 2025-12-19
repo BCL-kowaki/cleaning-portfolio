@@ -211,17 +211,42 @@ export default function PortfolioForm() {
         {assetTypes.map(({ key, label, emoji, description }) => (
           <div
             key={key}
-            className="flex items-center gap-3 p-3 rounded-lg bg-[#f0f2f5] hover:bg-[#e4e6eb] transition-colors"
+            className="p-3 rounded-lg bg-[#f0f2f5] hover:bg-[#e4e6eb] transition-colors"
           >
-            <div className="w-10 h-10 rounded-full bg-white fb-shadow flex items-center justify-center text-xl flex-shrink-0">
-              {emoji}
+            {/* モバイル: 縦並び / PC: 横並び */}
+            <div className="flex items-center gap-3 md:gap-3">
+              <div className="w-10 h-10 rounded-full bg-white fb-shadow flex items-center justify-center text-xl flex-shrink-0">
+                {emoji}
+              </div>
+              <div className="flex-1">
+                <div className="font-semibold text-[#1c1e21] text-sm">{label}</div>
+                <div className="text-[#65676b] text-xs">{description}</div>
+              </div>
+              {/* PC: 横に表示 */}
+              <div className="hidden md:flex items-center gap-2">
+                <div className="relative">
+                  <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#65676b] text-sm">¥</span>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={inputValues[key]}
+                    onChange={(e) => handleChange(key, e.target.value)}
+                    onBlur={() => handleBlur(key)}
+                    onFocus={() => handleFocus(key)}
+                    placeholder="0"
+                    className="w-28 pl-6 pr-2 py-2 text-right text-sm font-medium rounded-lg border border-[#dddfe2] focus:border-[#dc2743] focus:ring-2 focus:ring-[#dc2743]/20 transition-all bg-white"
+                  />
+                </div>
+                <div className="w-16 py-1.5 px-2 rounded-lg bg-white border border-[#dddfe2] text-center">
+                  <span className="instagram-gradient-text font-bold text-sm">
+                    {percentages[key].toFixed(1)}%
+                  </span>
+                </div>
+              </div>
             </div>
-            <div className="flex-1 min-w-0">
-              <div className="font-semibold text-[#1c1e21] text-sm">{label}</div>
-              <div className="text-[#65676b] text-xs truncate">{description}</div>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="relative">
+            {/* モバイル: 下に表示 */}
+            <div className="flex md:hidden items-center gap-2 mt-2 pl-13">
+              <div className="relative flex-1">
                 <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#65676b] text-sm">¥</span>
                 <input
                   type="text"
@@ -231,10 +256,10 @@ export default function PortfolioForm() {
                   onBlur={() => handleBlur(key)}
                   onFocus={() => handleFocus(key)}
                   placeholder="0"
-                  className="w-28 pl-6 pr-2 py-2 text-right text-sm font-medium rounded-lg border border-[#dddfe2] focus:border-[#dc2743] focus:ring-2 focus:ring-[#dc2743]/20 transition-all bg-white"
+                  className="w-full pl-6 pr-2 py-2 text-right text-sm font-medium rounded-lg border border-[#dddfe2] focus:border-[#dc2743] focus:ring-2 focus:ring-[#dc2743]/20 transition-all bg-white"
                 />
               </div>
-              <div className="w-16 py-1.5 px-2 rounded-lg bg-white border border-[#dddfe2] text-center">
+              <div className="w-20 py-1.5 px-2 rounded-lg bg-white border border-[#dddfe2] text-center flex-shrink-0">
                 <span className="instagram-gradient-text font-bold text-sm">
                   {percentages[key].toFixed(1)}%
                 </span>
