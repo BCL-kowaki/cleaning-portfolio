@@ -173,102 +173,34 @@ function generateEmailHTML(data: EmailRequest): string {
   `;
 }
 
-function generateAdminEmailHTML(data: EmailRequest): string {
-  const { userInfo, portfolio, totalAmount, diagnosisResult } = data;
+function generateAdminEmailText(data: EmailRequest): string {
+  const { userInfo, portfolio } = data;
   
-  return `
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>【新規診断】ポートフォリオ年末大掃除診断</title>
-</head>
-<body style="font-family: 'Hiragino Sans', sans-serif; padding: 20px; background: #f5f5f5;">
-  <div style="max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px;">
-    <h1 style="color: #dc2743; font-size: 20px; border-bottom: 2px solid #dc2743; padding-bottom: 10px;">
-      🧹 新規診断がありました
-    </h1>
-    
-    <h2 style="font-size: 16px; color: #333; margin-top: 25px;">📝 お客様情報</h2>
-    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-      <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 10px; font-weight: bold; width: 120px;">氏名</td>
-        <td style="padding: 10px;">${userInfo.name}</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 10px; font-weight: bold;">電話番号</td>
-        <td style="padding: 10px;">${userInfo.phone}</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 10px; font-weight: bold;">メールアドレス</td>
-        <td style="padding: 10px;">${userInfo.email}</td>
-      </tr>
-    </table>
+  // 日本時間でフォーマット
+  const now = new Date();
+  const jstDate = now.toLocaleString('ja-JP', { 
+    timeZone: 'Asia/Tokyo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  }).replace(/\//g, '/');
 
-    <h2 style="font-size: 16px; color: #333;">💼 ポートフォリオ情報</h2>
-    <p style="margin: 10px 0;"><strong>総資産額:</strong> ¥${totalAmount.toLocaleString('ja-JP')}</p>
-    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-      <tr style="background: #f5f5f5;">
-        <th style="padding: 10px; text-align: left;">資産クラス</th>
-        <th style="padding: 10px; text-align: right;">比率</th>
-      </tr>
-      <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 10px;">📈 株式</td>
-        <td style="padding: 10px; text-align: right;">${portfolio.stocks.toFixed(1)}%</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 10px;">🏢 不動産</td>
-        <td style="padding: 10px; text-align: right;">${portfolio.realEstate.toFixed(1)}%</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 10px;">🥇 金</td>
-        <td style="padding: 10px; text-align: right;">${portfolio.gold.toFixed(1)}%</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 10px;">📊 投信/ETF</td>
-        <td style="padding: 10px; text-align: right;">${portfolio.mutualFunds.toFixed(1)}%</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 10px;">₿ 暗号通貨</td>
-        <td style="padding: 10px; text-align: right;">${portfolio.crypto.toFixed(1)}%</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 10px;">💵 現金</td>
-        <td style="padding: 10px; text-align: right;">${portfolio.cash.toFixed(1)}%</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 10px;">📦 その他</td>
-        <td style="padding: 10px; text-align: right;">${portfolio.other.toFixed(1)}%</td>
-      </tr>
-    </table>
-
-    <h2 style="font-size: 16px; color: #333;">🎯 診断結果</h2>
-    <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-      <p style="margin: 0; font-size: 18px;">
-        ${diagnosisResult.emoji} <strong>${diagnosisResult.title}</strong>
-      </p>
-    </div>
-
-    <h2 style="font-size: 16px; color: #333;">📊 スコア</h2>
-    <table style="width: 100%; border-collapse: collapse;">
-      <tr>
-        <td style="padding: 8px;">攻撃力: ${diagnosisResult.stats.attack}</td>
-        <td style="padding: 8px;">防御力: ${diagnosisResult.stats.defense}</td>
-      </tr>
-      <tr>
-        <td style="padding: 8px;">流動性: ${diagnosisResult.stats.liquidity}</td>
-        <td style="padding: 8px;">インフレ耐性: ${diagnosisResult.stats.inflationResist}</td>
-      </tr>
-    </table>
-
-    <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-    <p style="color: #999; font-size: 12px; text-align: center;">
-      送信日時: ${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
-    </p>
-  </div>
-</body>
-</html>
-  `;
+  return `登録日時：${jstDate}
+フォーム名：【KAWARA版】ポートフォリオ大掃除診断テストフォーム
+氏名：${userInfo.name}
+電話番号：${userInfo.phone}
+メールアドレス：${userInfo.email}
+株式：${portfolio.stocks.toFixed(1)}%
+不動産：${portfolio.realEstate.toFixed(1)}%
+金：${portfolio.gold.toFixed(1)}%
+投信／ETF：${portfolio.mutualFunds.toFixed(1)}%
+暗号通貨：${portfolio.crypto.toFixed(1)}%
+現金：${portfolio.cash.toFixed(1)}%
+その他：${portfolio.other.toFixed(1)}%`;
 }
 
 export async function POST(request: NextRequest) {
@@ -284,12 +216,12 @@ export async function POST(request: NextRequest) {
       html: generateEmailHTML(data),
     };
 
-    // 2. 管理者への通知メール
+    // 2. 管理者への通知メール（テキスト形式）
     const adminMailOptions = {
       from: '"ポートフォリオ診断システム" <send@example.com>',
       to: ['quest@kawaraban.co.jp', 'y3awtd-hirayama-p@hdbronze.htdb.jp'],
-      subject: `【新規診断】${userInfo.name}様 - ${diagnosisResult.title}`,
-      html: generateAdminEmailHTML(data),
+      subject: `【ポートフォリオ大掃除診断結果】${userInfo.name} 様`,
+      text: generateAdminEmailText(data),
     };
 
     // メール送信（本番環境ではコメントを外す）
