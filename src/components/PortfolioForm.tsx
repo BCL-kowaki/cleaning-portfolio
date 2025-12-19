@@ -185,7 +185,7 @@ export default function PortfolioForm() {
             type="tel"
             value={userInfo.phone}
             onChange={(e) => handleUserInfoChange('phone', e.target.value)}
-            placeholder="090-1234-5678"
+            placeholder="09012345678"
             className={`w-full px-3 py-2 rounded-lg border ${errors.phone ? 'border-red-500' : 'border-[#dddfe2]'} focus:border-[#dc2743] focus:ring-2 focus:ring-[#dc2743]/20 transition-all bg-white text-sm`}
           />
           {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
