@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { DiagnosisResult as DiagnosisResultType } from '@/types/portfolio';
 import RadarChart from './RadarChart';
 
@@ -116,20 +115,10 @@ export default function DiagnosisResult({ result }: DiagnosisResultProps) {
       </div>
 
       {/* 免責事項 */}
-      <div className="bg-[#f0f2f5] rounded-lg p-3 text-center">
-        <p className="text-[#65676b] text-xs">
+      <div className="bg-[#f0f2f5] rounded-lg p-4 text-center">
+        <p className="text-[#1c1e21] text-base font-medium">
           ⚠️ この診断はエンターテインメントコンテンツです。投資判断は専門家にご相談ください。
         </p>
-      </div>
-
-      {/* 再診断ボタン */}
-      <div className="text-center pt-2">
-        <Link
-          href="/"
-          className="inline-block instagram-gradient text-white py-3 px-8 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity"
-        >
-          🔄 もう一度診断する
-        </Link>
       </div>
     </div>
   );

@@ -203,7 +203,7 @@ export default function ResultPage() {
         </Suspense>
 
         <footer className="mt-6 text-center text-[#65676b] text-xs">
-          <p>© 2025 ポートフォリオ年末大掃除診断</p>
+          <p>© 株式会社投資の"KAWARA"版.com</p>
         </footer>
       </div>
     </main>

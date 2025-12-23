@@ -50,7 +50,7 @@ export default function Home() {
 
         {/* フッター */}
         <footer className="mt-6 text-center text-[#65676b] text-xs">
-          <p>© 2025 ポートフォリオ年末大掃除診断</p>
+          <p>© 株式会社投資の"KAWARA"版.com</p>
           <p className="mt-1">※ この診断はエンターテインメント目的です</p>
         </footer>
       </div>
