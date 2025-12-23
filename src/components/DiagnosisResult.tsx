@@ -90,7 +90,7 @@ export default function DiagnosisResult({ result }: DiagnosisResultProps) {
       <div className="bg-white rounded-lg fb-shadow p-4">
         <h3 className="font-bold text-[#1c1e21] mb-3 flex items-center gap-2">
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
-          💡 2026年に向けたチェックポイント
+          💡 2026年のチェックポイント
         </h3>
         <div className="space-y-3">
           {result.cleanupAdvice.map((advice, index) => (

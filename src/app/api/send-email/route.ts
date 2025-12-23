@@ -162,7 +162,7 @@ function generateEmailHTML(data: EmailRequest): string {
 
       <!-- チェックポイント -->
       <div style="background: #f0f2f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-        <h3 style="color: #1c1e21; margin: 0 0 15px 0; font-size: 16px;">💡 2026年に向けたチェックポイント</h3>
+        <h3 style="color: #1c1e21; margin: 0 0 15px 0; font-size: 16px;">💡 2026年のチェックポイント</h3>
         ${diagnosisResult.cleanupAdvice.map((advice, index) => `
           <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
             <div style="font-weight: bold; color: #4218BB; margin-bottom: 5px; font-size: 14px;">${advice.action}</div>
