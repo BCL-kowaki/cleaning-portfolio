@@ -37,10 +37,10 @@ export default function RadarChart({ stats }: RadarChartProps) {
       {
         label: 'スコア',
         data: [stats.attack, stats.defense, stats.liquidity, stats.inflationResist],
-        backgroundColor: 'rgba(220, 39, 67, 0.15)',
-        borderColor: '#dc2743',
+        backgroundColor: 'rgba(66, 24, 187, 0.15)',
+        borderColor: '#4218BB',
         borderWidth: 2,
-        pointBackgroundColor: '#dc2743',
+        pointBackgroundColor: '#4218BB',
         pointBorderColor: '#fff',
         pointBorderWidth: 2,
         pointRadius: 5,

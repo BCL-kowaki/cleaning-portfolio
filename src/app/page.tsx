@@ -6,8 +6,7 @@ export default function Home() {
       {/* ヘッダー */}
       <header className="instagram-gradient text-white py-6 px-4 mb-6">
         <div className="container mx-auto max-w-xl text-center">
-          <div className="text-5xl mb-3">🧹</div>
-          <h1 className="text-2xl font-bold mb-2">
+          <h1 className="text-xl font-bold mt-2 mb-2">
             ポートフォリオ年末大掃除診断
           </h1>
           <p className="text-white/90 text-sm">

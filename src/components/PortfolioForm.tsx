@@ -172,7 +172,7 @@ export default function PortfolioForm() {
             value={userInfo.name}
             onChange={(e) => handleUserInfoChange('name', e.target.value)}
             placeholder="山田 太郎"
-            className={`w-full px-3 py-2 rounded-lg border ${errors.name ? 'border-red-500' : 'border-[#dddfe2]'} focus:border-[#dc2743] focus:ring-2 focus:ring-[#dc2743]/20 transition-all bg-white text-sm`}
+            className={`w-full px-3 py-2 rounded-lg border ${errors.name ? 'border-red-500' : 'border-[#dddfe2]'} focus:border-[#4218BB] focus:ring-2 focus:ring-[#4218BB]/20 transition-all bg-white text-sm`}
           />
           {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
         </div>
@@ -186,7 +186,7 @@ export default function PortfolioForm() {
             value={userInfo.phone}
             onChange={(e) => handleUserInfoChange('phone', e.target.value)}
             placeholder="09012345678"
-            className={`w-full px-3 py-2 rounded-lg border ${errors.phone ? 'border-red-500' : 'border-[#dddfe2]'} focus:border-[#dc2743] focus:ring-2 focus:ring-[#dc2743]/20 transition-all bg-white text-sm`}
+            className={`w-full px-3 py-2 rounded-lg border ${errors.phone ? 'border-red-500' : 'border-[#dddfe2]'} focus:border-[#4218BB] focus:ring-2 focus:ring-[#4218BB]/20 transition-all bg-white text-sm`}
           />
           {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
         </div>
@@ -200,7 +200,7 @@ export default function PortfolioForm() {
             value={userInfo.email}
             onChange={(e) => handleUserInfoChange('email', e.target.value)}
             placeholder="example@email.com"
-            className={`w-full px-3 py-2 rounded-lg border ${errors.email ? 'border-red-500' : 'border-[#dddfe2]'} focus:border-[#dc2743] focus:ring-2 focus:ring-[#dc2743]/20 transition-all bg-white text-sm`}
+            className={`w-full px-3 py-2 rounded-lg border ${errors.email ? 'border-red-500' : 'border-[#dddfe2]'} focus:border-[#4218BB] focus:ring-2 focus:ring-[#4218BB]/20 transition-all bg-white text-sm`}
           />
           {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
         </div>
@@ -239,7 +239,7 @@ export default function PortfolioForm() {
                     onBlur={() => handleBlur(key)}
                     onFocus={() => handleFocus(key)}
                     placeholder="0"
-                    className="w-28 pl-6 pr-2 py-2 text-right text-sm font-medium rounded-lg border border-[#dddfe2] focus:border-[#dc2743] focus:ring-2 focus:ring-[#dc2743]/20 transition-all bg-white"
+                    className="w-28 pl-6 pr-2 py-2 text-right text-sm font-medium rounded-lg border border-[#dddfe2] focus:border-[#4218BB] focus:ring-2 focus:ring-[#4218BB]/20 transition-all bg-white"
                   />
                 </div>
                 <div className="w-16 py-1.5 px-2 rounded-lg bg-white border border-[#dddfe2] text-center">
@@ -261,7 +261,7 @@ export default function PortfolioForm() {
                   onBlur={() => handleBlur(key)}
                   onFocus={() => handleFocus(key)}
                   placeholder="0"
-                  className="w-full pl-6 pr-2 py-2 text-right text-sm font-medium rounded-lg border border-[#dddfe2] focus:border-[#dc2743] focus:ring-2 focus:ring-[#dc2743]/20 transition-all bg-white"
+                  className="w-full pl-6 pr-2 py-2 text-right text-sm font-medium rounded-lg border border-[#dddfe2] focus:border-[#4218BB] focus:ring-2 focus:ring-[#4218BB]/20 transition-all bg-white"
                 />
               </div>
               <div className="w-20 py-1.5 px-2 rounded-lg bg-white border border-[#dddfe2] text-center flex-shrink-0">
