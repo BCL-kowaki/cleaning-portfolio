@@ -7,10 +7,10 @@ export default function Home() {
       <header className="instagram-gradient text-white py-6 px-4 mb-6">
         <div className="container mx-auto max-w-xl text-center">
           <h1 className="text-xl font-bold mt-2 mb-2">
-            ポートフォリオ年末大掃除診断
+            あなたのポートフォリオ診断テスト
           </h1>
           <p className="text-white/90 text-sm">
-            2026年に向けたリバランスアドバイスを受け取ろう
+            投資タイプを診断してリバランスアドバイスを受け取ろう
           </p>
         </div>
       </header>
@@ -22,7 +22,7 @@ export default function Home() {
             <span className="w-1 h-4 instagram-gradient rounded-full"></span>
             使い方
           </h2>
-          <div className="flex gap-4 text-sm text-[#65676b]">
+          <div className="flex gap-2 text-sm text-[#65676b]">
             <div className="flex-1 text-center">
               <div className="w-8 h-8 instagram-gradient rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">1</div>
               <p>金額を入力</p>

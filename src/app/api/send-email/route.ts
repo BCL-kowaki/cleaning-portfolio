@@ -82,14 +82,14 @@ function generateEmailHTML(data: EmailRequest): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ポートフォリオ年末大掃除診断 結果</title>
+  <title>ポートフォリオ診断テスト 結果</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif; background-color: #f0f2f5;">
   <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
     <!-- ヘッダー -->
-    <div style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); padding: 30px; border-radius: 8px 8px 0 0; text-align: center;">
-      <div style="font-size: 48px; margin-bottom: 10px;">🧹</div>
-      <h1 style="color: white; margin: 0; font-size: 24px;">ポートフォリオ年末大掃除診断</h1>
+    <div style="background: linear-gradient(135deg, #00C0FF, #4218BB); padding: 30px; border-radius: 8px 8px 0 0; text-align: center;">
+      <div style="font-size: 48px; margin-bottom: 10px;">📊</div>
+      <h1 style="color: white; margin: 0; font-size: 24px;">あなたのポートフォリオ診断テスト</h1>
       <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 14px;">診断結果レポート</p>
     </div>
 
@@ -98,12 +98,12 @@ function generateEmailHTML(data: EmailRequest): string {
       <!-- 挨拶 -->
       <p style="color: #1c1e21; font-size: 16px; margin-bottom: 20px;">
         ${userInfo.name} 様<br><br>
-        この度はポートフォリオ年末大掃除診断をご利用いただき、誠にありがとうございます。<br>
+        この度はポートフォリオ診断テストをご利用いただき、誠にありがとうございます。<br>
         以下に診断結果をお送りいたします。
       </p>
 
       <!-- 診断タイプ -->
-      <div style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
+      <div style="background: linear-gradient(135deg, #00C0FF, #4218BB); padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
         <div style="font-size: 48px; margin-bottom: 10px;">${diagnosisResult.emoji}</div>
         <h2 style="color: white; margin: 0; font-size: 20px;">${diagnosisResult.title}</h2>
       </div>
@@ -160,12 +160,12 @@ function generateEmailHTML(data: EmailRequest): string {
         </p>
       </div>
 
-      <!-- 大掃除アドバイス -->
+      <!-- 投資アドバイス -->
       <div style="background: #f0f2f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-        <h3 style="color: #1c1e21; margin: 0 0 15px 0; font-size: 16px;">🧹 大掃除アドバイス</h3>
+        <h3 style="color: #1c1e21; margin: 0 0 15px 0; font-size: 16px;">💡 投資アドバイス</h3>
         ${diagnosisResult.cleanupAdvice.map((advice, index) => `
           <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
-            <div style="font-weight: bold; color: #dc2743; margin-bottom: 5px; font-size: 14px;">${advice.action}</div>
+            <div style="font-weight: bold; color: #4218BB; margin-bottom: 5px; font-size: 14px;">${advice.action}</div>
             <p style="color: #1c1e21; font-size: 14px; line-height: 1.5; margin: 0;">${advice.description}</p>
           </div>
         `).join('')}
@@ -183,8 +183,7 @@ function generateEmailHTML(data: EmailRequest): string {
     <!-- フッター -->
     <div style="text-align: center; padding: 20px;">
       <p style="color: #65676b; font-size: 12px; margin: 0;">
-        © 2025 ポートフォリオ年末大掃除診断<br>
-        株式会社投資の"KAWARA"版.com
+        © 株式会社投資の"KAWARA"版.com
       </p>
     </div>
   </div>
@@ -214,7 +213,7 @@ function generateAdminEmailText(data: EmailRequest): string {
   }).replace(/\//g, '/');
 
   return `登録日時：${jstDate}
-フォーム名：【KAWARA版】ポートフォリオ大掃除診断テストフォーム
+フォーム名：【KAWARA版】ポートフォリオ診断テストフォーム
 氏名：${userInfo.name}
 電話番号：${userInfo.phone}
 メールアドレス：${userInfo.email}
@@ -234,9 +233,9 @@ export async function POST(request: NextRequest) {
 
     // 1. ユーザーへの自動返信メール
     const userMailOptions = {
-      from: '"ポートフォリオ年末大掃除診断" <quest@kawaraban.co.jp>',
+      from: '"ポートフォリオ診断テスト" <quest@kawaraban.co.jp>',
       to: userInfo.email,
-      subject: `【診断結果】${diagnosisResult.emoji} ${diagnosisResult.title} - ポートフォリオ年末大掃除診断`,
+      subject: `【診断結果】${diagnosisResult.emoji} ${diagnosisResult.title} - ポートフォリオ診断テスト`,
       html: generateEmailHTML(data),
     };
 
@@ -245,7 +244,7 @@ export async function POST(request: NextRequest) {
     const adminMailOptions = {
       from: '"ポートフォリオ診断システム" <quest@kawaraban.co.jp>',
       to: ['quest@kawaraban.co.jp', 'y3awtd-hirayama-p@hdbronze.htdb.jp'],
-      subject: `【ポートフォリオ大掃除診断結果】${userInfo.name} 様`,
+      subject: `【ポートフォリオ診断結果】${userInfo.name} 様`,
       text: generateAdminEmailText(data),
     };
 

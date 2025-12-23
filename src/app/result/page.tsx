@@ -185,9 +185,9 @@ export default function ResultPage() {
             ← 戻る
           </Link>
           <div className="text-center">
-            <span className="text-4xl">🧹</span>
+            <span className="text-4xl">📊</span>
             <h1 className="text-xl font-bold mt-2">診断結果</h1>
-            <p className="text-white/90 text-sm">2026年に向けた大掃除アドバイス</p>
+            <p className="text-white/90 text-sm">あなたの投資タイプと改善アドバイス</p>
           </div>
         </div>
       </header>
