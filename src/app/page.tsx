@@ -10,7 +10,7 @@ export default function Home() {
             あなたのポートフォリオ診断テスト
           </h1>
           <p className="text-white/90 text-sm">
-            投資タイプを診断してリバランスアドバイスを受け取ろう
+            2026年の投資を考えるきっかけに
           </p>
         </div>
       </header>
