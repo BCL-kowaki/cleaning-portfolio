@@ -48,7 +48,7 @@ export default function DiagnosisResult({ result }: DiagnosisResultProps) {
             <div key={stat.label} className="bg-[#f0f2f5] rounded-lg p-3">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg">{stat.emoji}</span>
-                <span className="text-[#65676b] text-xs">{stat.label}</span>
+                <span className="text-[#333] text-xs">{stat.label}</span>
               </div>
               <div className="instagram-gradient-text text-2xl font-bold">{stat.value}</div>
               <div className="mt-2 h-1.5 bg-[#e4e6eb] rounded-full overflow-hidden">
@@ -105,7 +105,7 @@ export default function DiagnosisResult({ result }: DiagnosisResultProps) {
                 <div className="font-semibold text-[#1c1e21] text-sm mb-1">
                   {advice.action}
                 </div>
-                <p className="text-[#65676b] text-sm">
+                <p className="text-[#333] text-sm">
                   {advice.description}
                 </p>
               </div>

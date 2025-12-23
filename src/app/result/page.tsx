@@ -134,7 +134,7 @@ function ResultContent() {
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
           {userInfo.name} 様
         </h2>
-        <p className="text-[#65676b] text-sm">
+        <p className="text-[#333] text-sm">
           診断結果をメールでもお送りしています
         </p>
       </div>
@@ -145,7 +145,7 @@ function ResultContent() {
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
           あなたのポートフォリオ
         </h2>
-        <p className="text-[#65676b] text-sm mb-3">
+        <p className="text-[#333] text-sm mb-3">
           総資産額: ¥{totalAmount.toLocaleString('ja-JP')}
         </p>
         <div className="flex flex-wrap gap-1.5">
@@ -181,9 +181,6 @@ export default function ResultPage() {
       {/* ヘッダー */}
       <header className="instagram-gradient text-white py-5 px-4 mb-6">
         <div className="container mx-auto max-w-xl">
-          <Link href="/" className="inline-flex items-center gap-2 text-white/90 hover:text-white text-sm mb-2">
-            ← 戻る
-          </Link>
           <div className="text-center">
             <span className="text-4xl">📊</span>
             <h1 className="text-xl font-bold mt-2">診断結果</h1>
