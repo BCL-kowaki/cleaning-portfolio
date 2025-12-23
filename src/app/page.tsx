@@ -9,7 +9,7 @@ export default function Home() {
           <h1 className="text-xl font-bold mt-2 mb-2">
             あなたのポートフォリオ診断テスト
           </h1>
-          <p className="text-white/90 text-sm">
+          <p className="text-white/90 font-bold text-sm">
             2026年の投資を考えるきっかけに
           </p>
         </div>
@@ -18,7 +18,7 @@ export default function Home() {
       <div className="container mx-auto px-4 max-w-xl pb-8">
         {/* 説明カード */}
         <div className="bg-white rounded-lg fb-shadow p-4 mb-4">
-          <h2 className="font-bold text-[#1c1e21] mb-3 flex items-center gap-2">
+          <h2 className="font-bold text-[#333] mb-3 flex items-center gap-2">
             <span className="w-1 h-4 instagram-gradient rounded-full"></span>
             使い方
           </h2>
@@ -40,7 +40,7 @@ export default function Home() {
 
         {/* フォームカード */}
         <div className="bg-white rounded-lg fb-shadow p-4">
-          <h2 className="font-bold text-[#1c1e21] mb-4 flex items-center gap-2">
+          <h2 className="font-bold text-[#333] mb-4 flex items-center gap-2">
             <span className="w-1 h-4 instagram-gradient rounded-full"></span>
             お客様情報
           </h2>

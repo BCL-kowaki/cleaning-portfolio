@@ -96,7 +96,7 @@ function generateEmailHTML(data: EmailRequest): string {
     <!-- コンテンツ -->
     <div style="background: white; padding: 30px; border-radius: 0 0 8px 8px;">
       <!-- 挨拶 -->
-      <p style="color: #1c1e21; font-size: 16px; margin-bottom: 20px;">
+      <p style="color: #333; font-size: 16px; margin-bottom: 20px;">
         ${userInfo.name} 様<br><br>
         この度はポートフォリオ診断テストをご利用いただき、誠にありがとうございます。<br>
         以下に診断結果をお送りいたします。
@@ -110,7 +110,7 @@ function generateEmailHTML(data: EmailRequest): string {
 
       <!-- ポートフォリオ概要 -->
       <div style="background: #f0f2f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-        <h3 style="color: #1c1e21; margin: 0 0 15px 0; font-size: 16px;">📊 あなたのポートフォリオ</h3>
+        <h3 style="color: #333; margin: 0 0 15px 0; font-size: 16px;">📊 あなたのポートフォリオ</h3>
         <p style="color: #65676b; margin: 0 0 10px 0; font-size: 14px;">総資産額: ¥${totalAmount.toLocaleString('ja-JP')}</p>
         <div>
           ${portfolioItems.map(item => `
@@ -123,7 +123,7 @@ function generateEmailHTML(data: EmailRequest): string {
 
       <!-- スコア -->
       <div style="background: #f0f2f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-        <h3 style="color: #1c1e21; margin: 0 0 15px 0; font-size: 16px;">📈 ポートフォリオスコア</h3>
+        <h3 style="color: #333; margin: 0 0 15px 0; font-size: 16px;">📈 ポートフォリオスコア</h3>
         <table style="width: 100%; border-collapse: collapse;">
           <tr>
             <td style="padding: 8px; font-size: 14px;">⚔️ 攻撃力</td>
@@ -146,27 +146,27 @@ function generateEmailHTML(data: EmailRequest): string {
 
       <!-- 診断結果 -->
       <div style="background: #f0f2f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-        <h3 style="color: #1c1e21; margin: 0 0 10px 0; font-size: 16px;">🔮 診断結果</h3>
-        <p style="color: #1c1e21; font-size: 14px; line-height: 1.6; margin: 0;">
+        <h3 style="color: #333; margin: 0 0 10px 0; font-size: 16px;">🔮 診断結果</h3>
+        <p style="color: #333; font-size: 14px; line-height: 1.6; margin: 0;">
           ${diagnosisResult.diagnosis}
         </p>
       </div>
 
       <!-- 2026年ニュース予報 -->
       <div style="background: #e8eaf6; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-        <h3 style="color: #1c1e21; margin: 0 0 10px 0; font-size: 16px;">📰 2026年ニュース予報</h3>
-        <p style="color: #1c1e21; font-size: 14px; line-height: 1.6; margin: 0;">
+        <h3 style="color: #333; margin: 0 0 10px 0; font-size: 16px;">📰 2026年ニュース予報</h3>
+        <p style="color: #333; font-size: 14px; line-height: 1.6; margin: 0;">
           ${diagnosisResult.newsForecast}
         </p>
       </div>
 
       <!-- チェックポイント -->
       <div style="background: #f0f2f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-        <h3 style="color: #1c1e21; margin: 0 0 15px 0; font-size: 16px;">💡 2026年に向けたチェックポイント</h3>
+        <h3 style="color: #333; margin: 0 0 15px 0; font-size: 16px;">💡 2026年に向けたチェックポイント</h3>
         ${diagnosisResult.cleanupAdvice.map((advice, index) => `
           <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
             <div style="font-weight: bold; color: #4218BB; margin-bottom: 5px; font-size: 14px;">${advice.action}</div>
-            <p style="color: #1c1e21; font-size: 14px; line-height: 1.5; margin: 0;">${advice.description}</p>
+            <p style="color: #333; font-size: 14px; line-height: 1.5; margin: 0;">${advice.description}</p>
           </div>
         `).join('')}
       </div>

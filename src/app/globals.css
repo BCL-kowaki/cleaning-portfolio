@@ -2,7 +2,7 @@
 
 :root {
   --background: #f0f2f5;
-  --foreground: #1c1e21;
+  --foreground: #333;
   --card-bg: #ffffff;
   --primary-gradient: linear-gradient(135deg, #00C0FF 0%, #4218BB 100%);
   --primary-color: #4218BB;

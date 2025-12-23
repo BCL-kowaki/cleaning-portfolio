@@ -94,7 +94,7 @@ function ResultContent() {
     return (
       <div className="bg-white rounded-lg fb-shadow p-8 text-center">
         <p className="text-4xl mb-4">🚫</p>
-        <h2 className="text-lg font-bold text-[#1c1e21] mb-2">
+        <h2 className="text-lg font-bold text-[#333] mb-2">
           ポートフォリオデータが見つかりません
         </h2>
         <p className="text-[#65676b] text-sm mb-6">
@@ -130,7 +130,7 @@ function ResultContent() {
 
       {/* ユーザー情報 */}
       <div className="bg-white rounded-lg fb-shadow p-4 mb-4">
-        <h2 className="font-bold text-[#1c1e21] mb-2 flex items-center gap-2">
+        <h2 className="font-bold text-[#333] mb-2 flex items-center gap-2">
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
           {userInfo.name} 様
         </h2>
@@ -141,7 +141,7 @@ function ResultContent() {
 
       {/* ポートフォリオ概要 */}
       <div className="bg-white rounded-lg fb-shadow p-4 mb-4">
-        <h2 className="font-bold text-[#1c1e21] mb-2 flex items-center gap-2">
+        <h2 className="font-bold text-[#333] mb-2 flex items-center gap-2">
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
           あなたのポートフォリオ
         </h2>

@@ -208,7 +208,7 @@ export default function PortfolioForm() {
 
       {/* ポートフォリオ入力 */}
       <div className="space-y-3">
-        <h3 className="font-bold text-[#1c1e21] flex items-center gap-2">
+        <h3 className="font-bold text-[#333] flex items-center gap-2">
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
           現在のポートフォリオ
         </h3>
@@ -224,7 +224,7 @@ export default function PortfolioForm() {
                 {emoji}
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-[#1c1e21] text-sm">{label}</div>
+                <div className="font-semibold text-[#333] text-sm">{label}</div>
                 <div className="text-[#65676b] text-xs">{description}</div>
               </div>
               {/* PC: 横に表示 */}
@@ -279,11 +279,11 @@ export default function PortfolioForm() {
         <div className="flex items-center justify-between mb-3">
           <div>
             <div className="text-[#65676b] text-xs">総資産額</div>
-            <div className="text-xl font-bold text-[#1c1e21]">¥{formatNumber(total)}</div>
+            <div className="text-xl font-bold text-[#333]">¥{formatNumber(total)}</div>
           </div>
           <div className="text-right">
             <div className="text-[#65676b] text-xs">入力済み</div>
-            <div className="text-lg font-semibold text-[#1c1e21]">
+            <div className="text-lg font-semibold text-[#333]">
               {Object.values(amounts).filter(v => v > 0).length}<span className="text-[#65676b] font-normal">/7</span>
             </div>
           </div>

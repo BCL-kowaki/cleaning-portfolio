@@ -59,7 +59,7 @@ export default function RadarChart({ stats }: RadarChartProps) {
           color: '#e4e6eb',
         },
         pointLabels: {
-          color: '#1c1e21',
+          color: '#333',
           font: {
             size: 12,
             weight: 600 as const,
@@ -82,7 +82,7 @@ export default function RadarChart({ stats }: RadarChartProps) {
         display: false,
       },
       tooltip: {
-        backgroundColor: '#1c1e21',
+        backgroundColor: '#333',
         titleColor: '#fff',
         bodyColor: '#fff',
         padding: 10,
