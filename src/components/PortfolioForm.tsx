@@ -164,7 +164,7 @@ export default function PortfolioForm() {
       {/* ユーザー情報入力 */}
       <div className="bg-[#f0f2f5] rounded-lg p-4 space-y-3">
         <div>
-          <label className="block text-sm font-medium text-[#65676b] mb-1">
+          <label className="block text-sm font-medium text-[#333] mb-1">
             氏名 <span className="text-red-500">*</span>
           </label>
           <input
@@ -178,7 +178,7 @@ export default function PortfolioForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#65676b] mb-1">
+          <label className="block text-sm font-medium text-[#333] mb-1">
             電話番号 <span className="text-red-500">*</span>
           </label>
           <input
@@ -192,7 +192,7 @@ export default function PortfolioForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#65676b] mb-1">
+          <label className="block text-sm font-medium text-[#333] mb-1">
             メールアドレス <span className="text-red-500">*</span>
           </label>
           <input
@@ -208,7 +208,7 @@ export default function PortfolioForm() {
 
       {/* ポートフォリオ入力 */}
       <div className="space-y-3">
-        <h3 className="font-bold text-[#333] flex items-center gap-2">
+        <h3 className="font-bold text-[#1c1e21] flex items-center gap-2">
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
           現在のポートフォリオ
         </h3>
@@ -224,13 +224,13 @@ export default function PortfolioForm() {
                 {emoji}
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-[#333] text-sm">{label}</div>
-                <div className="text-[#65676b] text-xs">{description}</div>
+                <div className="font-semibold text-[#1c1e21] text-sm">{label}</div>
+                <div className="text-[#333] text-xs">{description}</div>
               </div>
               {/* PC: 横に表示 */}
               <div className="hidden md:flex items-center gap-2">
                 <div className="relative">
-                  <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#65676b] text-sm">¥</span>
+                  <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#333] text-sm">¥</span>
                   <input
                     type="text"
                     inputMode="numeric"
@@ -252,7 +252,7 @@ export default function PortfolioForm() {
             {/* モバイル: 下に表示 */}
             <div className="flex md:hidden items-center gap-2 mt-2 pl-13">
               <div className="relative flex-1">
-                <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#65676b] text-sm">¥</span>
+                <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#333] text-sm">¥</span>
                 <input
                   type="text"
                   inputMode="numeric"
@@ -278,13 +278,13 @@ export default function PortfolioForm() {
       <div className="bg-[#f0f2f5] rounded-lg p-4">
         <div className="flex items-center justify-between mb-3">
           <div>
-            <div className="text-[#65676b] text-xs">総資産額</div>
-            <div className="text-xl font-bold text-[#333]">¥{formatNumber(total)}</div>
+            <div className="text-[#333] text-xs">総資産額</div>
+            <div className="text-xl font-bold text-[#1c1e21]">¥{formatNumber(total)}</div>
           </div>
           <div className="text-right">
-            <div className="text-[#65676b] text-xs">入力済み</div>
-            <div className="text-lg font-semibold text-[#333]">
-              {Object.values(amounts).filter(v => v > 0).length}<span className="text-[#65676b] font-normal">/7</span>
+            <div className="text-[#333] text-xs">入力済み</div>
+            <div className="text-lg font-semibold text-[#1c1e21]">
+              {Object.values(amounts).filter(v => v > 0).length}<span className="text-[#333] font-normal">/7</span>
             </div>
           </div>
         </div>
@@ -297,7 +297,7 @@ export default function PortfolioForm() {
                 className="inline-flex items-center gap-1 bg-white px-2 py-1 rounded-full text-xs fb-shadow"
               >
                 <span>{emoji}</span>
-                <span className="text-[#65676b]">{label}</span>
+                <span className="text-[#333]">{label}</span>
                 <span className="instagram-gradient-text font-semibold">{percentages[key].toFixed(1)}%</span>
               </span>
             ))}

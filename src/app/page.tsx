@@ -22,7 +22,7 @@ export default function Home() {
             <span className="w-1 h-4 instagram-gradient rounded-full"></span>
             使い方
           </h2>
-          <div className="flex gap-2 text-sm text-[#65676b]">
+          <div className="flex gap-2 text-sm text-[#333]">
             <div className="flex-1 text-center">
               <div className="w-8 h-8 instagram-gradient rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">1</div>
               <p>金額を入力</p>

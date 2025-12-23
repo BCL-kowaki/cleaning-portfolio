@@ -32,7 +32,7 @@ export default function DiagnosisResult({ result }: DiagnosisResultProps) {
 
       {/* レーダーチャート */}
       <div className="bg-white rounded-lg fb-shadow p-4">
-        <h3 className="font-bold text-[#333] mb-4 flex items-center gap-2">
+        <h3 className="font-bold text-[#1c1e21] mb-4 flex items-center gap-2">
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
           ポートフォリオ分析
         </h3>
@@ -65,10 +65,10 @@ export default function DiagnosisResult({ result }: DiagnosisResultProps) {
       {/* 診断結果 */}
       <div className={`bg-white rounded-lg fb-shadow overflow-hidden`}>
         <div className={`${styles.bg} p-4`}>
-          <h3 className="font-bold text-[#333] mb-2 flex items-center gap-2">
+          <h3 className="font-bold text-[#1c1e21] mb-2 flex items-center gap-2">
             🔮 診断結果
           </h3>
-          <p className="text-[#333] text-sm leading-relaxed">
+          <p className="text-[#1c1e21] text-sm leading-relaxed">
             {result.diagnosis}
           </p>
         </div>
@@ -77,10 +77,10 @@ export default function DiagnosisResult({ result }: DiagnosisResultProps) {
       {/* 2026年ニュース予報 */}
       <div className="bg-white rounded-lg fb-shadow overflow-hidden">
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-4">
-          <h3 className="font-bold text-[#333] mb-2 flex items-center gap-2">
+          <h3 className="font-bold text-[#1c1e21] mb-2 flex items-center gap-2">
             📰 2026年ニュース予報
           </h3>
-          <p className="text-[#333] text-sm leading-relaxed">
+          <p className="text-[#1c1e21] text-sm leading-relaxed">
             {result.newsForecast}
           </p>
         </div>
@@ -88,7 +88,7 @@ export default function DiagnosisResult({ result }: DiagnosisResultProps) {
 
       {/* チェックポイント */}
       <div className="bg-white rounded-lg fb-shadow p-4">
-        <h3 className="font-bold text-[#333] mb-3 flex items-center gap-2">
+        <h3 className="font-bold text-[#1c1e21] mb-3 flex items-center gap-2">
           <span className="w-1 h-4 instagram-gradient rounded-full"></span>
           💡 2026年に向けたチェックポイント
         </h3>
@@ -102,7 +102,7 @@ export default function DiagnosisResult({ result }: DiagnosisResultProps) {
                 {index + 1}
               </div>
               <div>
-                <div className="font-semibold text-[#333] text-sm mb-1">
+                <div className="font-semibold text-[#1c1e21] text-sm mb-1">
                   {advice.action}
                 </div>
                 <p className="text-[#65676b] text-sm">
@@ -116,7 +116,7 @@ export default function DiagnosisResult({ result }: DiagnosisResultProps) {
 
       {/* 免責事項 */}
       <div className="bg-[#f0f2f5] rounded-lg p-4 text-center">
-        <p className="text-[#333] text-base font-medium">
+        <p className="text-[#1c1e21] text-base font-medium">
           ⚠️ この診断はエンターテインメントコンテンツです。投資判断は専門家にご相談ください。
         </p>
       </div>
