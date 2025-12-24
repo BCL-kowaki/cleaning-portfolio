@@ -197,7 +197,7 @@ function formatYen(amount: number): string {
 }
 
 function generateAdminEmailText(data: EmailRequest): string {
-  const { userInfo, amounts } = data;
+  const { userInfo, amounts, diagnosisResult } = data;
   
   // 日本時間でフォーマット
   const now = new Date();
@@ -217,13 +217,14 @@ function generateAdminEmailText(data: EmailRequest): string {
 氏名：${userInfo.name}
 電話番号：${userInfo.phone}
 メールアドレス：${userInfo.email}
-株式：¥${formatYen(amounts.stocks)}
-不動産：¥${formatYen(amounts.realEstate)}
-金：¥${formatYen(amounts.gold)}
-投信／ETF：¥${formatYen(amounts.mutualFunds)}
-暗号通貨：¥${formatYen(amounts.crypto)}
-現金：¥${formatYen(amounts.cash)}
-その他：¥${formatYen(amounts.other)}`;
+株式：${formatYen(amounts.stocks)}
+不動産：${formatYen(amounts.realEstate)}
+金：${formatYen(amounts.gold)}
+投信／ETF：${formatYen(amounts.mutualFunds)}
+暗号通貨：${formatYen(amounts.crypto)}
+現金：${formatYen(amounts.cash)}
+その他：${formatYen(amounts.other)}
+診断結果：${diagnosisResult.title}`;
 }
 
 export async function POST(request: NextRequest) {

@@ -7,7 +7,7 @@ export default function Home() {
       <header className="instagram-gradient text-white py-6 px-4 mb-6">
         <div className="container mx-auto max-w-xl text-center">
           <h1 className="text-xl font-bold mt-2 mb-2">
-            あなたのポートフォリオ診断テスト
+            あなたのポートフォリオ診断
           </h1>
           <p className="text-white/90 font-bold text-sm">
             2026年の投資を考えるきっかけに
