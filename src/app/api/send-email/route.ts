@@ -234,16 +234,16 @@ export async function POST(request: NextRequest) {
 
     // 1. ユーザーへの自動返信メール
     const userMailOptions = {
-      from: '"ポートフォリオ診断テスト" <quest@kawaraban.co.jp>',
+      from: '"投資のKAWARA版.com" <quest@kawaraban.co.jp>',
       to: userInfo.email,
-      subject: `【診断結果】${diagnosisResult.emoji} ${diagnosisResult.title} - ポートフォリオ診断テスト`,
+      subject: `【ポートフォリオ診断テスト診断結果】${diagnosisResult.emoji} ${diagnosisResult.title} `,
       html: generateEmailHTML(data),
     };
 
     // 2. 管理者への通知メール（テキスト形式）
     // ※ 送信元は認証済みアドレスを使用
     const adminMailOptions = {
-      from: '"ポートフォリオ診断システム" <quest@kawaraban.co.jp>',
+      from: '"【KAWARA版】ポートフォリオ診断" <quest@kawaraban.co.jp>',
       to: ['quest@kawaraban.co.jp', 'y3awtd-hirayama-p@hdbronze.htdb.jp'],
       subject: `【ポートフォリオ診断結果】${userInfo.name} 様`,
       text: generateAdminEmailText(data),
