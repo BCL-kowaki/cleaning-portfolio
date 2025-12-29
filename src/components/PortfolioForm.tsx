@@ -117,15 +117,22 @@ export default function PortfolioForm() {
       newErrors.name = '氏名を入力してください';
     }
     
+    // 電話番号: 半角数字のみ、10〜11桁
     if (!userInfo.phone.trim()) {
       newErrors.phone = '電話番号を入力してください';
-    } else if (!/^[0-9-]+$/.test(userInfo.phone)) {
-      newErrors.phone = '有効な電話番号を入力してください';
+    } else if (!/^[0-9]+$/.test(userInfo.phone)) {
+      newErrors.phone = '半角数字のみで入力してください（ハイフンなし）';
+    } else if (userInfo.phone.length < 10 || userInfo.phone.length > 11) {
+      newErrors.phone = '電話番号は10〜11桁で入力してください';
     }
     
+    // メールアドレス: 半角英数字・記号のみ、厳密な形式チェック
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     if (!userInfo.email.trim()) {
       newErrors.email = 'メールアドレスを入力してください';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userInfo.email)) {
+    } else if (/[^\x00-\x7F]/.test(userInfo.email)) {
+      newErrors.email = '半角英数字で入力してください';
+    } else if (!emailRegex.test(userInfo.email)) {
       newErrors.email = '有効なメールアドレスを入力してください';
     }
     
